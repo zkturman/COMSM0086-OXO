@@ -38,7 +38,6 @@ class OXOController
             gameModel.setCellOwner(row, col, gameModel.getCurrentPlayer());
             gameover = isGameover();
             gameModel.setCurrentPlayer(gameModel.getPlayerByNumber(turnNumber % gameModel.getNumberOfPlayers()));
-
         }
     }
 
