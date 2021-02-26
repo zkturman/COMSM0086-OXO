@@ -4,7 +4,7 @@ import java.util.*;
 class OXOModel
 {
     private ArrayList<ArrayList<OXOPlayer>> cells;
-    private OXOPlayer players[];
+    private ArrayList<OXOPlayer> players;
     private OXOPlayer currentPlayer;
     private OXOPlayer winner;
     private boolean gameDrawn;
@@ -13,34 +13,29 @@ class OXOModel
     public OXOModel(int numberOfRows, int numberOfColumns, int winThresh)
     {
         winThreshold = winThresh;
-        cells = new ArrayList<ArrayList<OXOPlayer>>(numberOfRows);
+        cells = new ArrayList<>(numberOfRows);
         for (int i = 0; i < numberOfRows; i++){
-            cells.add(new ArrayList<OXOPlayer>(numberOfColumns));
+            cells.add(new ArrayList<>(numberOfColumns));
             for (int j = 0; j < numberOfColumns; j++){
                 cells.get(i).add(null);
             }
         }
-        players = new OXOPlayer[2];
+        players = new ArrayList<>(2);
     }
 
     public int getNumberOfPlayers()
     {
-        return players.length;
+        return players.size();
     }
 
     public void addPlayer(OXOPlayer player)
     {
-        for(int i=0; i<players.length ;i++) {
-            if(players[i] == null) {
-                players[i] = player;
-                return;
-            }
-        }
+        players.add(player);
     }
 
     public OXOPlayer getPlayerByNumber(int number)
     {
-        return players[number];
+        return players.get(number);
     }
 
     public OXOPlayer getWinner()
